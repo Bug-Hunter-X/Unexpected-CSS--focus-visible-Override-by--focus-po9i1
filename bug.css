@@ -1,0 +1,13 @@
+The following CSS code snippet demonstrates an uncommon error involving unexpected behavior with the `:focus-visible` pseudo-class:
+
+```css
+.my-element:focus-visible {
+  outline: 2px solid blue;
+}
+
+.my-element:focus {
+  box-shadow: 0 0 5px red;
+}
+```
+
+The intention is that when the element receives focus, a blue outline is shown by `:focus-visible`, but when it receives programmatic focus a red box-shadow should be displayed by `:focus`. However, in some browsers (particularly older versions), the `:focus` style might override the `:focus-visible` style even when focus is received by keyboard interaction or mouse click.
