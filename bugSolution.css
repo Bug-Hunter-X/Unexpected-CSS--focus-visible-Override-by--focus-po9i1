@@ -1,0 +1,17 @@
+The solution to this problem involves carefully managing CSS specificity and order. Ensuring `:focus-visible` has higher specificity than `:focus` can help avoid the unexpected override:
+
+```css
+.my-element {
+  outline: none; /* Reset default outline */
+}
+
+.my-element:focus-visible {
+  outline: 2px solid blue;
+}
+
+.my-element:focus {
+  box-shadow: 0 0 5px red; /* Applied only if focus-visible is not active */
+}
+```
+
+This approach uses `outline: none` to reset the default outline on the element and gives priority to `:focus-visible`. The :focus rule is used to ensure the red box-shadow is applied only in situations where the element gains focus through non-user initiated methods.
